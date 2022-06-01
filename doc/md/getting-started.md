@@ -141,13 +141,14 @@ import (
 	"context"
 	"log"
 
+	"entgo.io/ent/dialect"
 	"<project>/ent"
 
 	_ "github.com/mattn/go-sqlite3"
 )
 
 func main() {
-	client, err := ent.Open("sqlite3", "file:ent?mode=memory&cache=shared&_fk=1")
+	client, err := ent.Open(dialect.SQLite, "file:ent?mode=memory&cache=shared&_fk=1")
 	if err != nil {
 		log.Fatalf("failed opening connection to sqlite: %v", err)
 	}
@@ -169,13 +170,14 @@ import (
 	"context"
 	"log"
 
+	"entgo.io/ent/dialect"
 	"<project>/ent"
 
 	_ "github.com/lib/pq"
 )
 
 func main() {
-	client, err := ent.Open("postgres","host=<host> port=<port> user=<user> dbname=<database> password=<pass>")
+	client, err := ent.Open(dialect.Postgres, "host=<host> port=<port> user=<user> dbname=<database> password=<pass>")
 	if err != nil {
 		log.Fatalf("failed opening connection to sqlite: %v", err)
 	}
@@ -197,13 +199,14 @@ import (
 	"context"
 	"log"
 
+	"entgo.io/ent/dialect"
 	"<project>/ent"
 
 	_ "github.com/go-sql-driver/mysql"
 )
 
 func main() {
-	client, err := ent.Open("mysql", "<user>:<pass>@tcp(<host>:<port>)/<database>?parseTime=True")
+	client, err := ent.Open(dialect.MySQL, "<user>:<pass>@tcp(<host>:<port>)/<database>?parseTime=True")
 	if err != nil {
 		log.Fatalf("failed opening connection to sqlite: %v", err)
 	}
